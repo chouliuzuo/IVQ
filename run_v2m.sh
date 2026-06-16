@@ -1,1 +1,0 @@
-dora -P module run solver=gvmgen/gvmgen model/lm/model_scale=small dataset.batch_size=10 optim.updates_per_epoch=2800 dataset.valid.num_samples=5000 dataset.evaluate.num_samples=5000
