@@ -1,0 +1,1 @@
+dora -P module run solver=compression/IVQ dataset.batch_size=36 optim.updates_per_epoch=1600 dataset.valid.num_samples=2160
