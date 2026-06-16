@@ -1,0 +1,10 @@
+# @package __global__
+
+defaults:
+  - compression/default
+  - /model: encodec/encodec_large_nq4_s640_64cs
+  - override /dset: audio/mtg
+  - _self_
+
+channels: 1
+sample_rate: 48000

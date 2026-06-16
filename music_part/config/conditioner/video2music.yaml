@@ -1,0 +1,31 @@
+# @package __global__
+
+classifier_free_guidance:
+  training_dropout: 0.3
+  inference_coef: 3.0
+
+attribute_dropout: {}
+
+fuser:
+  cross_attention_pos_emb: false
+  cross_attention_pos_emb_scale: 1
+  sum: []
+  prepend: []
+  cross: [visual_content]
+  input_interpolate: []
+
+conditioners:
+  visual_content:
+    model: video
+    video:
+      name: ViT-L/14@336px
+      video_len: 30
+      finetune: true
+      is_qformer: true
+      qformer:
+        query_num: 16
+        query_type: mean
+        layer_norm_eps: 1e-12
+        hidden_dropout_prob: 0.1
+        qformer_layers: 6
+        cross_attention_frequency: 2

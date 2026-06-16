@@ -1,0 +1,12 @@
+default:
+  dora_dir: /home/ubuntu/Desktop/workspace
+  partitions:
+    global: debug
+    team: debug
+  reference_dir: /home/ubuntu/Desktop/workspace
+darwin:  # if we detect we are on a Mac, then most likely we are doing unit testing etc.
+  dora_dir: /home/ubuntu/Desktop/workspace
+  partitions:
+    global: debug
+    team: debug
+  reference_dir: /home/ubuntu/Desktop/workspace

@@ -1,0 +1,13 @@
+# @package __global__
+
+defaults:
+  - encodec/default
+
+seanet:
+  ratios: [8, 5, 4, 4]
+  n_filters: 64
+
+rvq:
+  bins: 64
+  n_q: 4
+  q_dropout: false

@@ -1,0 +1,10 @@
+# @package __global__
+
+datasource:
+  max_channels: 2
+  max_sample_rate: 32000
+
+  evaluate: /path/to/eval
+  generate: /path/to/eval
+  train: /path/to/train
+  valid: /path/to/eval

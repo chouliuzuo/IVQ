@@ -1,0 +1,15 @@
+# @package __global__
+
+defaults:
+  - encodec/default
+
+seanet:
+  dimension: 96
+  ratios: [8, 5, 4, 4]
+  n_filters: 64
+
+rvq:
+  bins: 2
+  n_q: 4
+  orthogonal_reg_weight: 0.0
+  q_dropout: false

@@ -1,0 +1,10 @@
+# @package __global__
+
+defaults:
+  - compression/default
+  - /model: encodec/IVQ
+  - override /dset: audio/train
+  - _self_
+
+channels: 1
+sample_rate: 32000
