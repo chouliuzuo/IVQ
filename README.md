@@ -13,7 +13,7 @@ Please refer to ```./vision_part``` and ```./music_part```
 
 ### 3. Model weights
 
-The pretrained model's parameter weights will be published soon.
+The pretrained model's parameter weights have been published and can be accessed at [here](https://huggingface.co/chouliu/IVQ/tree/main).
 
 ### 4. Acknowledgements
 
