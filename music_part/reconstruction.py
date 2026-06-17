@@ -3,10 +3,10 @@ import os
 import torchaudio
 from module.decoder.models.loaders import load_compression_model
 
-name = "/path/to/checkpoint"
+model_path = "/path/to/checkpoint"
 sample_rate = 32000
 device = "cuda" if torch.cuda.is_available() else "cpu"
-model = load_compression_model(name, device=device)
+model = load_compression_model(model_path, device=device)
 
 
 output_dir = "/path/to/output"
