@@ -262,7 +262,7 @@ class LMModel(StreamingModule):
                                src_mask=(self.attn_mask_per_stage[stage] if stage >= 0 else None))
         if self.out_norm:
             out = self.out_norm(out)
-        logits = torch.stack([self.linears[k](out) for k in range(K)], dim=1)  # [B, K, S, card]
+        # logits = torch.stack([self.linears[k](out) for k in range(K)], dim=1)  # [B, K, S, card]
         logits = torch.stack([self.linears_extra[k](self.linears[k](out)) for k in range(K)], dim=1)
 
 
