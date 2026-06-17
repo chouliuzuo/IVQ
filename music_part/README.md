@@ -70,4 +70,4 @@ python v2m.py --model_path ./checkpoints --video_pt_dir /path/to/video_pt --syn_
 
 ### 5. Model weights
 
-The pretrained model's parameter weights will be published soon.
+The pretrained model's parameter weights have been published and can be accessed at [here](https://huggingface.co/chouliu/IVQ/tree/main), in which ```compression_state_dict.bin``` is for music reconstruction while ```state_dict.bin``` is for video-to-music generation. You should put these two models in the same directory and set the ```model_path``` parameter to the directory for whether ```reconstruction.py``` or ```v2m.py```
