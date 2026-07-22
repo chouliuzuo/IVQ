@@ -132,7 +132,7 @@ class EuclideanCodebook(nn.Module):
             return
 
         embed, cluster_size = kmeans(data, self.codebook_size, self.kmeans_iters)
-        self.embed = embed
+        self.embed.data.copy_(embed)
         self.embed_avg.data.copy_(embed.clone())
         self.cluster_size.data.copy_(cluster_size)
         self.inited.data.copy_(torch.Tensor([True]))
@@ -143,7 +143,7 @@ class EuclideanCodebook(nn.Module):
         modified_codebook = torch.where(
             mask[..., None], sample_vectors(samples, self.codebook_size), self.embed
         )
-        self.embed = modified_codebook
+        self.embed.data.copy_(modified_codebook)
 
     def expire_codes_(self, batch_samples):
         if self.threshold_ema_dead_code == 0:
