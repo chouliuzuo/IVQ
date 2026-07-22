@@ -543,10 +543,10 @@ class ResidualVectorQuantization(nn.Module):
             all_indices.append(indices)
             all_losses.append(loss)
             
-        # gua_loss = self.gua_loss(x.device)
-        # all_losses.append(gua_loss)
-        # cuozong_loss = self.cuozong_loss(x.device)
-        # all_losses.append(cuozong_loss)
+        gua_loss = self.gua_loss(x.device)
+        all_losses.append(gua_loss)
+        cuozong_loss = self.cuozong_loss(x.device)
+        all_losses.append(cuozong_loss)
         
         if self.training:
             # Solving subtle bug with STE and RVQ: https://github.com/facebookresearch/encodec/issues/25
