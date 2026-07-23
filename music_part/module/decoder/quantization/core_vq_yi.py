@@ -124,7 +124,7 @@ class EuclideanCodebook(nn.Module):
         self.register_buffer("inited", torch.Tensor([not kmeans_init]))
         self.register_buffer("cluster_size", torch.zeros(codebook_size))
         self.embed = nn.Parameter(embed)
-        self.register_buffer("embed_avg", embed.clone())
+        self.embed_avg =  nn.Parameter(embed.clone())
 
     @torch.jit.ignore
     def init_embed_(self, data):
@@ -204,19 +204,19 @@ class EuclideanCodebook(nn.Module):
             
         quantize = self.dequantize(embed_ind)
 
-        # if self.training:
-        #     # We do the expiry of code at that point as buffers are in sync
-        #     # and all the workers will take the same decision.
-        #     self.expire_codes_(x)
-        #     ema_inplace(self.cluster_size, embed_onehot.sum(0), self.decay)
-        #     embed_sum = x.t() @ embed_onehot
-        #     ema_inplace(self.embed_avg, embed_sum.t(), self.decay)
-        #     cluster_size = (
-        #         laplace_smoothing(self.cluster_size, self.codebook_size, self.epsilon)
-        #         * self.cluster_size.sum()
-        #     )
-        #     embed_normalized = self.embed_avg / cluster_size.unsqueeze(1)
-        #     self.embed.data.copy_(embed_normalized)
+        if self.training:
+            # We do the expiry of code at that point as buffers are in sync
+            # and all the workers will take the same decision.
+            self.expire_codes_(x)
+            ema_inplace(self.cluster_size, embed_onehot.sum(0), self.decay)
+            embed_sum = x.t() @ embed_onehot
+            ema_inplace(self.embed_avg, embed_sum.t(), self.decay)
+            cluster_size = (
+                laplace_smoothing(self.cluster_size, self.codebook_size, self.epsilon)
+                * self.cluster_size.sum()
+            )
+            embed_normalized = self.embed_avg / cluster_size.unsqueeze(1)
+            self.embed.data.copy_(embed_normalized)
 
         return quantize, embed_ind
 
