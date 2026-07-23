@@ -124,7 +124,7 @@ class EuclideanCodebook(nn.Module):
         self.register_buffer("inited", torch.Tensor([not kmeans_init]))
         self.register_buffer("cluster_size", torch.zeros(codebook_size))
         self.embed = nn.Parameter(embed)
-        self.embed_avg =  nn.Parameter(embed.clone())
+        self.embed_avg = nn.Parameter(embed.clone())
 
     @torch.jit.ignore
     def init_embed_(self, data):
